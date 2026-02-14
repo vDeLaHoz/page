@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi Reina 💖</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff4e8a,#ff9a9e);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.phone{
+width:100%;
+max-width:380px;
+background:white;
+border-radius:30px;
+box-shadow:0 20px 60px rgba(0,0,0,0.3);
+overflow:hidden;
+}
+
+/* PANTALLAS */
+.screen{
+padding:30px 20px;
+text-align:center;
+}
+
+.hidden{
+display:none;
+}
+
+/* LOGIN CENTRADO */
+#loginScreen{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:420px;
+transition:opacity 0.6s ease, transform 0.6s ease;
+}
+
+#loginScreen.fade-out{
+opacity:0;
+transform:scale(0.9);
+pointer-events:none;
+}
+
+/* APP */
+#appScreen{
+display:none;
+animation:fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+h1,h2{
+color:#ff2e63;
+margin-top:15px;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#ff2e63;
+color:white;
+cursor:pointer;
+margin-top:15px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#ff4e8a;
+}
+
+input{
+padding:10px;
+border-radius:20px;
+border:1px solid #ccc;
+margin-top:10px;
+text-align:center;
+width:80%;
+}
+
+/* ===== SOBRE ===== */
+
+.carta-container{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:30px;
+}
+
+.envelope{
+width:240px;
+height:160px;
+background:#ff2e63;
+position:relative;
+border-radius:10px;
+cursor:pointer;
+overflow:hidden;
+}
+
+/* TAPA */
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:0;
+height:0;
+border-left:120px solid transparent;
+border-right:120px solid transparent;
+border-top:80px solid #ff7ba9;
+transform-origin:top;
+transition:transform 0.8s ease;
+z-index:3;
+}
+
+/* ANIMACIÓN TAPA */
+.envelope.open .flap{
+transform:rotateX(180deg);
+}
+
+/* CARTA INTERNA */
+.letter{
+position:absolute;
+bottom:0;
+left:50%;
+transform:translateX(-50%) translateY(100%);
+width:85%;
+background:white;
+padding:10px;
+border-radius:8px;
+text-align:center;
+color:#ff2e63;
+font-size:16px;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+transition:transform 0.8s ease, opacity 0.5s ease;
+z-index:1;
+
+/* 👇 CLAVE */
+opacity:0;
+}
+
+/* CARTA SALE SOLO AL ABRIR */
+.envelope.open .letter{
+transform:translateX(-50%) translateY(-5%);
+opacity:1;
+}
+
+
+/* CONTADOR */
+#contador{
+margin-top:10px;
+font-size:16px;
+}
+
+/* GALERÍA */
+.gallery{
+display:flex;
+gap:10px;
+overflow-x:auto;
+margin-top:15px;
+}
+.gallery img{
+width:110px;
+border-radius:15px;
+}
+
+/* CORAZONES FLOTANDO */
+.floating-heart{
+position:fixed;
+bottom:0;
+font-size:20px;
+animation:floatUp 5s linear infinite;
+}
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+<!-- LOGIN -->
+<div id="loginScreen" class="screen">
+<h1>🔐 Acceso Secreto</h1>
+<p>Ingresa nuestra fecha especial</p>
+<input type="password" id="password" placeholder="DDMMYYYY">
+<button onclick="verificar()">Entrar 💖</button>
+</div>
+
+<!-- APP -->
+<div id="appScreen" class="screen">
+
+<h1>Feliz San Valentín 💖</h1>
+
+<h2>Toca el Sobre 💌</h2>
+<div class="carta-container">
+    <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="letter">
+            Eres la dueña de mi corazón ❤️ <br> 
+            Gracias por cada momento, cada sonrisa y cada abrazo.
+            Te amo mi reina hermosa.
+        </div>
+    </div>
+</div>
+
+<h2>⏳ Tiempo juntos</h2>
+<div id="contador"></div>
+
+<h2>📸 Recuerdos</h2>
+<div class="gallery">
+<img src="https://1drv.ms/i/c/149434b72b5e9737/IQQVgjsj4hKMQp97ch2JvIQ0ASRXI2gcQ-Jp67RI0Gd_nVw?width=960&height=1280">
+<img src="https://1drv.ms/i/c/149434b72b5e9737/IQSGALPtEWJpSoXJSuMDD1hvAa6Fkq0-AsRl-cajFsrEssg?width=960&height=1280">
+<img src="https://1drv.ms/i/c/149434b72b5e9737/IQRVKk-QX2mPQ6ahvdVPKjTrAQ0C-hBVKdOkj3XlOkV_uOA?width=960&height=1280">
+</div>
+</div>
+</div>
+
+<audio id="music" loop>
+<source src="https://github.com/vDeLaHoz/Music/raw/refs/heads/main/Ivan%20Villaz%C3%B3n%20Saul%20Lallemand%208.El%20Caramelito%20El%20Poder%20del%20Amor.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+/* LOGIN */
+function verificar(){
+const pass=document.getElementById("password").value;
+if(pass==="12012025"){  // cambia tu clave aquí
+
+const login=document.getElementById("loginScreen");
+const app=document.getElementById("appScreen");
+
+login.classList.add("fade-out");
+
+setTimeout(()=>{
+login.style.display="none";
+app.style.display="block";
+actualizarContador();
+},600);
+
+document.getElementById("music").play().catch(()=>{});
+
+}else{
+alert("Contraseña incorrecta 😢");
+}
+}
+
+/* SOBRE */
+document.getElementById("envelope").addEventListener("click",function(){
+this.classList.toggle("open");
+});
+
+/* CONTADOR */
+const fechaInicio=new Date("2025-01-12");
+function actualizarContador(){
+const ahora=new Date();
+const diff=ahora-fechaInicio;
+
+const dias=Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("contador").innerText=
+`${dias} días de puro amor 💕`;
+}
+setInterval(actualizarContador,1000);
+
+/* CORAZONES */
+function corazones(){
+const heart=document.createElement("div");
+heart.classList.add("floating-heart");
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),5000);
+}
+setInterval(corazones,800);
+
+</script>
+
+</body>
+</html>
